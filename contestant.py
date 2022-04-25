@@ -17,6 +17,7 @@ class Contestant:
         self.__score_average = 0.0
         self.__eliminated_flag = False
         self.__placement = 0
+        self.__overly_safe_flag = False
 
     @property
     def placement(self):
@@ -38,6 +39,14 @@ class Contestant:
     @star_power.setter
     def star_power(self, value: int):
         self.__star_power = value
+
+    @property
+    def overly_safe_flag(self):
+        return self.__overly_safe_flag
+
+    @overly_safe_flag.setter
+    def overly_safe_flag(self, value: bool):
+        self.__overly_safe_flag = value
 
     @property
     def whatnottosing_score(self):
