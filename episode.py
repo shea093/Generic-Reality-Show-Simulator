@@ -28,6 +28,8 @@ class Episode:
 
 
 
+
+
         self.__contestant_weekly_scores = []
 
         star_power_bias = 0.05
@@ -165,18 +167,21 @@ class Episode:
             losing_steam_chance = random.Random(rng_seed + seed_increment).randint(1, 100)
             seed_increment = seed_increment + 100
             if (contestant.wins + contestant.highs) > 6 and self.__week_number >= 7 and losing_steam_chance > 35:
-                contestant.score = contestant.score / 0.80
+                contestant.score = contestant.score * 0.80
             if (contestant.wins + contestant.highs) >= 4 and self.__week_number < 7 and losing_steam_chance > 25:
-                contestant.score = contestant.score / 0.85
+                contestant.score = contestant.score * 0.85
             if contestant.safes > 3 and week_number <= 7 and contestant.overly_safe_flag == False:
                 contestant.overly_safe_flag = True
                 seed_increment = seed_increment + 350
                 safe_change = random.Random(rng_seed + seed_increment).randint(-30, 15)
                 contestant.score = contestant.score + safe_change
-                if safe_change > 5:
-                    contestant.score = contestant.score * 1.25
+                # if safe_change > 5:
+                #     contestant.score = contestant.score * 1.25
                 if safe_change < -20:
                     contestant.score = contestant.score * 0.8
+            if contestant.contestant_name == "The Warrior of Light":
+                contestant.score = contestant.score + 0
+                test = ""
 
 
 
@@ -200,6 +205,8 @@ class Episode:
                 self.__lows.append(self.__contestant_weekly_scores[self.__contestant_number-self.__btm_count-(n+1)][0].contestant_name)
         for n in range(0,self.__btm_count):
             self.__btm.append(self.__contestant_weekly_scores[self.__contestant_number-n-1][0].contestant_name)
+
+
         self.__eliminated = self.__contestant_weekly_scores[self.__contestant_number-1][0]
 
         self.__next_week_contestants = []
@@ -222,25 +229,30 @@ class Episode:
                 contestant.lows = contestant.lows + 1
                 contestant.score = contestant.score -7
                 if self.__week_number <=3:
-                    contestant.score = contestant.score + -7
+                    contestant.score = contestant.score + 3
                 self.__next_week_contestants.append(contestant)
             elif contestant.contestant_name in self.__btm:
                 self.__non_safe_contestants.append(contestant.contestant_name)
                 contestant.btms = contestant.btms + 1
                 contestant.score = contestant.score - 15
                 if self.__week_number <=3:
-                    contestant.score = contestant.score + -9
+                    contestant.score = contestant.score + 8
+                    contestant.btms = contestant.btms - 1
+                    contestant.lows = contestant.lows + 1
                 if contestant.contestant_name != self.__eliminated.contestant_name:
                     self.__next_week_contestants.append(contestant)
                 else:
-                    contestant.eliminated_flag = True
+                    if self.__week_number <= 3:
+                        self.__next_week_contestants.append(contestant)
+                    else:
+                        contestant.eliminated_flag = True
             #safe
             else:
                 self.__safes.append(contestant.contestant_name)
                 contestant.safes = contestant.safes + 1
                 contestant.score = contestant.score - 3
-                if self.__week_number <= 4:
-                    contestant.score = contestant.score - 5
+                if self.__week_number >= 4 and self.__week_number <= 9:
+                    contestant.score = contestant.score - 3
                 self.__next_week_contestants.append(contestant)
 
 

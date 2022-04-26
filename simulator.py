@@ -3,42 +3,42 @@ from episode import Episode
 import random
 
 #4636
-global_rng_seed = 536347645646546535332354243432443437457455345536345666346534647465545432534642355435432552345423454324353545314305543332142321
+global_rng_seed = 337531144
 
 simulator_seed_increment = 0
 contestants = []
 
 def make_contestants():
-    contestants.append(Contestant(contestant_id=1,contestant_name="Josh Gracin",
-                                  star_power=32,whatnottosing=43,sympathy=75,comedy=64))
-    contestants.append(Contestant(contestant_id=2, contestant_name="Kim Caldwell",
-                                  star_power=51, whatnottosing=45, sympathy=32, comedy=20))
-    contestants.append(Contestant(contestant_id=3, contestant_name="Charles Grigsby",
-                                  star_power=15, whatnottosing=36, sympathy=83, comedy=11))
-    contestants.append(Contestant(contestant_id=4, contestant_name="Corey Clark",
-                                  star_power=45, whatnottosing=37, sympathy=2, comedy=35))
-    contestants.append(Contestant(contestant_id=5, contestant_name="Rebecca Bond",
-                                  star_power=46, whatnottosing=33, sympathy=13, comedy=50))
-    contestants.append(Contestant(contestant_id=6, contestant_name="Candice Coleman",
-                                  star_power=51, whatnottosing=38, sympathy=76, comedy=46))
-    contestants.append(Contestant(contestant_id=7, contestant_name="Anthony Fedorov",
-                                  star_power=36, whatnottosing=40, sympathy=85, comedy=15))
-    contestants.append(Contestant(contestant_id=8, contestant_name="David Radford",
-                                  star_power=44, whatnottosing=25, sympathy=84, comedy=74))
-    contestants.append(Contestant(contestant_id=9, contestant_name="Stevie Scott",
-                                  star_power=34, whatnottosing=10, sympathy=65, comedy=12))
-    contestants.append(Contestant(contestant_id=10, contestant_name="Lisa Tucker",
-                                  star_power=56, whatnottosing=46, sympathy=65, comedy=11))
-    contestants.append(Contestant(contestant_id=11, contestant_name="Kevin Covais",
-                                  star_power=11, whatnottosing=29, sympathy=84, comedy=81))
-    contestants.append(Contestant(contestant_id=12, contestant_name="Brenna Gethers",
-                                  star_power=63, whatnottosing=11, sympathy=11, comedy=99))
-    contestants.append(Contestant(contestant_id=13, contestant_name="Alaina Whitaker",
-                                  star_power=38, whatnottosing=53, sympathy=55, comedy=36))
-    contestants.append(Contestant(contestant_id=14, contestant_name="Danny Gokey",
-                                  star_power=27, whatnottosing=49, sympathy=75, comedy=33))
-    contestants.append(Contestant(contestant_id=14, contestant_name="Tatiana Del Toro",
-                                  star_power=49, whatnottosing=48, sympathy=55, comedy=99))
+    contestants.append(Contestant(contestant_id=1,contestant_name="G'raha Tia",
+                                  star_power=65,whatnottosing=78,sympathy=80,comedy=74))
+    contestants.append(Contestant(contestant_id=2, contestant_name="Krile Baldesion",
+                                  star_power=51, whatnottosing=72, sympathy=69, comedy=82))
+    contestants.append(Contestant(contestant_id=3, contestant_name="Alphinaud Leveilleur",
+                                  star_power=45, whatnottosing=85, sympathy=51, comedy=35))
+    contestants.append(Contestant(contestant_id=4, contestant_name="Alisaie Leveilleur",
+                                  star_power=67, whatnottosing=62, sympathy=11, comedy=78))
+    contestants.append(Contestant(contestant_id=5, contestant_name="Y'shtola Rhul",
+                                  star_power=62, whatnottosing=72, sympathy=44, comedy=68))
+    contestants.append(Contestant(contestant_id=6, contestant_name="Urianger Augurelt",
+                                  star_power=41, whatnottosing=82, sympathy=76, comedy=46))
+    contestants.append(Contestant(contestant_id=7, contestant_name="Tataru Taru",
+                                  star_power=89, whatnottosing=41, sympathy=85, comedy=52))
+    contestants.append(Contestant(contestant_id=8, contestant_name="Estinien Wyrmblood",
+                                  star_power=38, whatnottosing=39, sympathy=12, comedy=54))
+    contestants.append(Contestant(contestant_id=9, contestant_name="Lyse Hext",
+                                  star_power=52, whatnottosing=27, sympathy=35, comedy=12))
+    contestants.append(Contestant(contestant_id=10, contestant_name="Thancred Waters",
+                                  star_power=57, whatnottosing=41, sympathy=40, comedy=27))
+    contestants.append(Contestant(contestant_id=11, contestant_name="The Warrior of Light",
+                                  star_power=80, whatnottosing=70, sympathy=55, comedy=22))
+    contestants.append(Contestant(contestant_id=12, contestant_name="Ryne",
+                                  star_power=69, whatnottosing=28, sympathy=91, comedy=12))
+    # contestants.append(Contestant(contestant_id=13, contestant_name="Alaina Whitaker",
+    #                               star_power=38, whatnottosing=53, sympathy=55, comedy=36))
+    # contestants.append(Contestant(contestant_id=14, contestant_name="Danny Gokey",
+    #                               star_power=27, whatnottosing=49, sympathy=75, comedy=33))
+    # contestants.append(Contestant(contestant_id=14, contestant_name="Tatiana Del Toro",
+    #                               star_power=49, whatnottosing=48, sympathy=55, comedy=99))
 
 def get_highs(ep: Episode):
     output = ""
@@ -116,11 +116,11 @@ for contestant in contestants:
 elimination_order = []
 
 
-def simulate_a_week(week_number: int, this_weeks_contestants: list[Contestant], pause = False):
+def simulate_a_week(week_number: int, this_weeks_contestants: list[Contestant], pause = False, non_elims = 0):
     if len(this_weeks_contestants) == 2:
         print("----------------------------")
-        print(this_weeks_contestants[0].contestant_name+" score: "+str(this_weeks_contestants[0].score_average))
-        print(this_weeks_contestants[1].contestant_name + " score: " + str(this_weeks_contestants[1].score_average))
+        print(this_weeks_contestants[0].contestant_name+" score: "+str(this_weeks_contestants[0].score))
+        print(this_weeks_contestants[1].contestant_name + " score: " + str(this_weeks_contestants[1].score))
         if this_weeks_contestants[0].score_average > this_weeks_contestants[1].score_average:
             elim_person = [this_weeks_contestants[1].contestant_name, this_weeks_contestants[1].wins, this_weeks_contestants[1].highs,
                            round(this_weeks_contestants[1].score_average,2)]
@@ -182,10 +182,13 @@ def simulate_a_week(week_number: int, this_weeks_contestants: list[Contestant], 
     if pause == True:
         input("...")
 
-    print("Eliminated: " + this_episode.eliminated.contestant_name)
-    elim_person = [this_episode.eliminated.contestant_name,this_episode.eliminated.wins,this_episode.eliminated.highs,
+    if week_number <= non_elims:
+        pass
+    else:
+        print("Eliminated: " + this_episode.eliminated.contestant_name)
+        elim_person = [this_episode.eliminated.contestant_name,this_episode.eliminated.wins,this_episode.eliminated.highs,
                    round(this_episode.eliminated.score_average,2)]
-    elimination_order.append(elim_person)
+        elimination_order.append(elim_person)
     next_week_pool = this_episode.next_week_contestants
     if pause == True:
         input("...")
@@ -197,7 +200,7 @@ for i in range (1,16):
     if weekly_contestant_pool == "Finale":
         pass
     else:
-        next_week = simulate_a_week(i,weekly_contestant_pool,pause=False)
+        next_week = simulate_a_week(i,weekly_contestant_pool,pause=True,non_elims=3)
         weekly_contestant_pool = next_week
 
 elimination_order.reverse()
