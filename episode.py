@@ -113,6 +113,55 @@ class Episode:
                 contestant_score = contestant_score - 10
             if (contestant.wins) >= 3 and self.__week_number >= 9:
                 contestant_score = contestant_score * 0.7
+
+            seed_increment = seed_increment + 100
+            losing_steam_chance = random.Random(rng_seed + seed_increment).randint(1, 100)
+            seed_increment = seed_increment + 100
+
+            if (contestant.wins) >= 3 and self.__week_number >= 8 and losing_steam_chance > 75:
+                contestant_score = contestant_score - 35
+            seed_increment = seed_increment + 100
+            losing_steam_chance = random.Random(rng_seed + seed_increment).randint(1, 100)
+            seed_increment = seed_increment + 100
+            if (contestant.wins + contestant.highs) > 6 and self.__week_number >= 7 and losing_steam_chance > 35:
+                contestant_score = contestant_score * 0.80
+            if (contestant.wins + contestant.highs) >= 4 and self.__week_number < 7 and losing_steam_chance > 25:
+                contestant_score = contestant_score * 0.85
+
+            seed_increment = seed_increment + 100
+            ceiling_max = contestant.score_average + random.Random(rng_seed + seed_increment).randint(1, 20)
+            if ceiling_max > 100:
+                ceiling_max = 100
+            if ceiling_max < 60:
+                ceiling_max = 60
+            seed_increment = seed_increment + 100
+            ceiling_rng = random.Random(rng_seed + seed_increment).randint(60, round(ceiling_max))
+
+            seed_increment = seed_increment + 100
+            great_contestant_score_floor = contestant.score_average - (contestant.score_average * (random.Random(rng_seed + seed_increment).randint(30, 50) / 100 ))
+            seed_increment = seed_increment + 100
+
+            if contestant.wins >= 2 and (contestant.wins + contestant.highs) > 6 and self.__week_number >= 7 and losing_steam_chance <= 86:
+                contestant.score_ceiling = ceiling_rng
+                contestant.score_floor = great_contestant_score_floor
+
+            seed_increment = seed_increment + 100
+            losing_steam_chance = random.Random(rng_seed + seed_increment).randint(1, 100)
+            seed_increment = seed_increment + 100
+
+            if contestant.wins >= 4 and losing_steam_chance <= 90:
+                contestant.score_ceiling = contestant.score_average * 0.85
+
+            if contestant.wins >= 3 and self.__week_number >= 8:
+                contestant.score_floor = contestant.score_floor * 1.15
+
+            if contestant_score > contestant.score_ceiling:
+                contestant_score = contestant.score_ceiling
+
+            if contestant_score < contestant.score_floor:
+                contestant_score = contestant.score_floor
+
+
             contestant_weekly_score.append(contestant)
             contestant_weekly_score.append(contestant_score)
             self.__contestant_weekly_scores.append(contestant_weekly_score)
@@ -161,15 +210,7 @@ class Episode:
                         self.__winner = self.__contestant_weekly_scores[0][0].contestant_name
                         test = self.__winner
                         test = ""
-            if (contestant.wins) >= 3 and self.__week_number >= 8 and losing_steam_chance > 35:
-                contestant.score = contestant.score - 35
-            seed_increment = seed_increment + 100
-            losing_steam_chance = random.Random(rng_seed + seed_increment).randint(1, 100)
-            seed_increment = seed_increment + 100
-            if (contestant.wins + contestant.highs) > 6 and self.__week_number >= 7 and losing_steam_chance > 35:
-                contestant.score = contestant.score * 0.80
-            if (contestant.wins + contestant.highs) >= 4 and self.__week_number < 7 and losing_steam_chance > 25:
-                contestant.score = contestant.score * 0.85
+
             if contestant.safes > 3 and week_number <= 7 and contestant.overly_safe_flag == False:
                 contestant.overly_safe_flag = True
                 seed_increment = seed_increment + 350
@@ -178,10 +219,7 @@ class Episode:
                 # if safe_change > 5:
                 #     contestant.score = contestant.score * 1.25
                 if safe_change < -20:
-                    contestant.score = contestant.score * 0.8
-            if contestant.contestant_name == "The Warrior of Light":
-                contestant.score = contestant.score + 0
-                test = ""
+                    contestant.score = contestant.score - 5
 
 
 

@@ -18,6 +18,8 @@ class Contestant:
         self.__eliminated_flag = False
         self.__placement = 0
         self.__overly_safe_flag = False
+        self.__score_floor = 1
+        self.__score_ceiling = 100
 
     @property
     def placement(self):
@@ -39,6 +41,22 @@ class Contestant:
     @star_power.setter
     def star_power(self, value: int):
         self.__star_power = value
+
+    @property
+    def score_floor(self):
+        return self.__score_floor
+
+    @score_floor.setter
+    def score_floor(self, value: int):
+        self.__score_floor = value
+
+    @property
+    def score_ceiling(self):
+        return self.__score_ceiling
+
+    @score_ceiling.setter
+    def score_ceiling(self, value: int):
+        self.__score_ceiling = value
 
     @property
     def overly_safe_flag(self):

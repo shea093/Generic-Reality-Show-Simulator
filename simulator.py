@@ -3,7 +3,7 @@ from episode import Episode
 import random
 
 #4636
-global_rng_seed = 337531144
+global_rng_seed = 620102
 
 simulator_seed_increment = 0
 contestants = []
