@@ -23,7 +23,7 @@
     contestants.append(Contestant(contestant_id=12, contestant_name="Ryne",
                                   star_power=69, whatnottosing=28, sympathy=91, comedy=12))
 
-        contestants.append(Contestant(contestant_id=1,contestant_name="Melinda Doolittle",
+    contestants.append(Contestant(contestant_id=1,contestant_name="Melinda Doolittle",
                                   star_power=87,whatnottosing=77,sympathy=86,comedy=64))
     contestants.append(Contestant(contestant_id=2, contestant_name="George Huff",
                                   star_power=63, whatnottosing=72, sympathy=62, comedy=82))

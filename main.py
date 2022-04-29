@@ -39,39 +39,6 @@ def make_contestants():
     #                               star_power=49, whatnottosing=48, sympathy=55, comedy=99))
 
 make_contestants()
-
-simmed_seasons = []
-
-sim_start = random.randint(1,9999999999)
-
-for i in range(sim_start,sim_start+50000):
-    sim_season = Simulator(seed=i,contestant_list=contestants)
-    sim_season_this = copy.deepcopy(sim_season)
-    sim_season_this.simulate_season()
-    simmed_seasons.append(sim_season_this)
-
-winner_dict = {}
-cumulative_wins = {}
-
-for i in simmed_seasons[0].elimination_order:
-    winner_dict[i[4].contestant_name] = 0
-    cumulative_wins[i[4].contestant_name] = 0
-
-for i in simmed_seasons:
-    current_contestant = i.elimination_order[0][4]
-    winner_dict[current_contestant.contestant_name] = winner_dict[current_contestant.contestant_name] + 1
-    cumulative_wins[current_contestant.contestant_name] = cumulative_wins[current_contestant.contestant_name] + current_contestant.wins
-    print(current_contestant.contestant_name + ", WINS: " + str(current_contestant.wins))
-
-print(winner_dict)
-print(cumulative_wins)
-
-print("------------")
-print("WINNER COUNT")
-for key, value in winner_dict.items():
-    print(key + ": \t" + str(value))
-
-print("------------")
-print("CUMULATIVE WINS")
-for key,value in cumulative_wins.items():
-    print(key + ": \t" + str(value))
+sim_season = Simulator(seed=13242543256654764563467676, contestant_list=contestants, pause_bool=False)
+sim_season.simulate_season()
+sim_season.elim_ending()

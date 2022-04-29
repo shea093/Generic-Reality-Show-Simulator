@@ -21,11 +21,12 @@ def blockPrinting(func):
 
 class Simulator:
 
-    def __init__(self, seed: int, contestant_list: list[Contestant]):
+    def __init__(self, seed: int, contestant_list: list[Contestant], pause_bool = False):
         self.__global_rng_seed = seed
         self.__seed_increment = random.Random(self.__global_rng_seed).randint(1,100)
         self.__contestants = contestant_list
         self.__elimination_order = []
+        self.__pause = pause_bool
 
 
     def get_highs(self, ep: Episode):
@@ -101,7 +102,7 @@ class Simulator:
 
 
 
-    @blockPrinting
+#    @blockPrinting
     def simulate_a_week(self, week_number: int, this_weeks_contestants: list[Contestant], pause = False, non_elims = 0):
         if len(this_weeks_contestants) == 2:
             print("----------------------------")
@@ -181,13 +182,15 @@ class Simulator:
         return next_week_pool
 
     def simulate_season(self):
+        for contestant in self.__contestants:
+            print(contestant.contestant_name)
         weekly_contestant_pool = self.__contestants.copy()
 
         for i in range (1,16):
             if weekly_contestant_pool == "Finale":
                 pass
             else:
-                next_week = self.simulate_a_week(i,weekly_contestant_pool,pause=False,non_elims=3)
+                next_week = self.simulate_a_week(i,weekly_contestant_pool,pause=self.__pause,non_elims=3)
                 weekly_contestant_pool = next_week
 
         self.__elimination_order.reverse()
@@ -198,6 +201,11 @@ class Simulator:
     @property
     def elimination_order(self):
         return self.__elimination_order
+
+    def elim_ending(self):
+        for index, elim in enumerate(self.__elimination_order):
+            print(elim[0],"\t",elim[3],"\t","WINS: ",elim[4].wins,"\t","HIGHS: ",elim[4].highs,"\t","BTMS: ",elim[4].btms,"LOWS: ",elim[4].lows)
+
 
     def __repr__(self):
         return "<" + "Seed: " + str(self.__global_rng_seed) + ", Winner: " + self.__elimination_order[0][0] + ">"
