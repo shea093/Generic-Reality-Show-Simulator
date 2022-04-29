@@ -20,6 +20,7 @@ class Contestant:
         self.__overly_safe_flag = False
         self.__score_floor = 1
         self.__score_ceiling = 100
+        self.__ceiling_steam_change = False
 
     @property
     def placement(self):
@@ -41,6 +42,14 @@ class Contestant:
     @star_power.setter
     def star_power(self, value: int):
         self.__star_power = value
+
+    @property
+    def ceiling_steam_change(self):
+        return self.__ceiling_steam_change
+
+    @ceiling_steam_change.setter
+    def ceiling_steam_change(self, value: bool):
+        self.__ceiling_steam_change = value
 
     @property
     def score_floor(self):
