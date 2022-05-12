@@ -40,12 +40,12 @@ class Episode:
         random_bias = 0.51
 
         if self.__week_number <= 2:
-            star_power_bias = 0.12
-            score_bias = 0.11
-            whatnottosing_bias = 0.20
+            star_power_bias = 0.2
+            score_bias = 0.07
+            whatnottosing_bias = 0.22
             sympathy_bias = 0.03
             comedy_bias = 0.03
-            random_bias = 0.5
+            random_bias = 0.44
 
         if self.__week_number >= 8:
             star_power_bias = 0.04
@@ -217,7 +217,7 @@ class Episode:
                 contestant_score = temp_score_floor
 
             # BIG RANDOM CHANGER
-            rngize_percent = 0.5
+            rngize_percent = 0.15
             seed_increment = seed_increment + seed_increment
             rngize_rating = random.Random(self.__rng_seed + seed_increment).randint(1, 100)
             seed_increment = seed_increment + seed_increment

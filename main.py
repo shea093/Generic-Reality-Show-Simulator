@@ -7,30 +7,30 @@ import copy
 contestants = []
 
 def make_contestants():
-    contestants.append(Contestant(contestant_id=1, contestant_name="G'raha Tia",
-                                  star_power=65, whatnottosing=78, sympathy=80, comedy=74))
-    contestants.append(Contestant(contestant_id=2, contestant_name="Krile Baldesion",
-                                  star_power=51, whatnottosing=72, sympathy=69, comedy=82))
-    contestants.append(Contestant(contestant_id=3, contestant_name="Alphinaud Leveilleur",
-                                  star_power=45, whatnottosing=85, sympathy=51, comedy=35))
-    contestants.append(Contestant(contestant_id=4, contestant_name="Alisaie Leveilleur",
-                                  star_power=67, whatnottosing=62, sympathy=11, comedy=78))
-    contestants.append(Contestant(contestant_id=5, contestant_name="Y'shtola Rhul",
-                                  star_power=62, whatnottosing=72, sympathy=44, comedy=68))
-    contestants.append(Contestant(contestant_id=6, contestant_name="Urianger Augurelt",
-                                  star_power=41, whatnottosing=82, sympathy=76, comedy=46))
-    contestants.append(Contestant(contestant_id=7, contestant_name="Tataru Taru",
-                                  star_power=89, whatnottosing=41, sympathy=85, comedy=52))
-    contestants.append(Contestant(contestant_id=8, contestant_name="Estinien Wyrmblood",
-                                  star_power=38, whatnottosing=39, sympathy=12, comedy=54))
-    contestants.append(Contestant(contestant_id=9, contestant_name="Lyse Hext",
-                                  star_power=52, whatnottosing=27, sympathy=35, comedy=12))
-    contestants.append(Contestant(contestant_id=10, contestant_name="Thancred Waters",
-                                  star_power=57, whatnottosing=41, sympathy=40, comedy=27))
-    contestants.append(Contestant(contestant_id=11, contestant_name="The Warrior of Light",
-                                  star_power=80, whatnottosing=70, sympathy=55, comedy=22))
-    contestants.append(Contestant(contestant_id=12, contestant_name="Ryne",
-                                  star_power=69, whatnottosing=28, sympathy=91, comedy=12))
+    contestants.append(Contestant(contestant_id=1, contestant_name="Ameliance Leveilleur",
+                                  star_power=75, whatnottosing=62, sympathy=86, comedy=66))
+    contestants.append(Contestant(contestant_id=2, contestant_name="Fourchenalt Leveilleur",
+                                  star_power=62, whatnottosing=86, sympathy=2, comedy=2))
+    contestants.append(Contestant(contestant_id=3, contestant_name="Dulia Chai",
+                                  star_power=77, whatnottosing=52, sympathy=66, comedy=88))
+    contestants.append(Contestant(contestant_id=4, contestant_name="Chai-Nuzz",
+                                  star_power=66, whatnottosing=79, sympathy=6, comedy=21))
+    contestants.append(Contestant(contestant_id=5, contestant_name="Runar",
+                                  star_power=41, whatnottosing=34, sympathy=44, comedy=34))
+    contestants.append(Contestant(contestant_id=6, contestant_name="Emet Selch",
+                                  star_power=66, whatnottosing=97, sympathy=55, comedy=35))
+    contestants.append(Contestant(contestant_id=7, contestant_name="Venat",
+                                  star_power=98, whatnottosing=81, sympathy=85, comedy=62))
+    contestants.append(Contestant(contestant_id=8, contestant_name="Hythlodeus",
+                                  star_power=87, whatnottosing=86, sympathy=88, comedy=72))
+    contestants.append(Contestant(contestant_id=9, contestant_name="Erenville",
+                                  star_power=60, whatnottosing=78, sympathy=15, comedy=32))
+    contestants.append(Contestant(contestant_id=10, contestant_name="Raubahn",
+                                  star_power=66, whatnottosing=37, sympathy=20, comedy=27))
+    contestants.append(Contestant(contestant_id=11, contestant_name="Merlwyb",
+                                  star_power=62, whatnottosing=50, sympathy=25, comedy=22))
+    contestants.append(Contestant(contestant_id=12, contestant_name="Kan-E-Senna",
+                                  star_power=72, whatnottosing=53, sympathy=91, comedy=8))
     # contestants.append(Contestant(contestant_id=13, contestant_name="Alaina Whitaker",
     #                               star_power=38, whatnottosing=53, sympathy=55, comedy=36))
     # contestants.append(Contestant(contestant_id=14, contestant_name="Danny Gokey",
@@ -39,6 +39,7 @@ def make_contestants():
     #                               star_power=49, whatnottosing=48, sympathy=55, comedy=99))
 
 make_contestants()
-sim_season = Simulator(seed=13242543256654764563467676, contestant_list=contestants, pause_bool=False)
+sim_season = Simulator(seed=907214076503, contestant_list=contestants, pause_bool=False)
 sim_season.simulate_season()
+test = ""
 sim_season.elim_ending()
