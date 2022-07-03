@@ -2,7 +2,9 @@ import os
 import sys
 
 from contestant import Contestant
-from episode import Episode
+#from episode import Episode
+from episode2 import Episode
+import episode_type
 import random
 
 
@@ -26,7 +28,13 @@ class Simulator:
         self.__seed_increment = random.Random(self.__global_rng_seed).randint(1,100)
         self.__contestants = contestant_list
         self.__elimination_order = []
+        self.episodes = []
         self.__pause = pause_bool
+        self.__global_episode_types = episode_type.return_ep_types(self.__global_rng_seed)
+
+        random.Random(self.__global_rng_seed+self.__seed_increment).shuffle(self.__global_episode_types)
+        self.__seed_increment += 1
+
 
 
     def get_highs(self, ep: Episode):
@@ -124,10 +132,12 @@ class Simulator:
                 self.__elimination_order.append(elim_person)
             print("----------------------------")
             return "Finale"
-        this_episode = Episode(week_number=week_number, contestants=this_weeks_contestants, rng_seed=self.__global_rng_seed+week_number)
+        this_episode = Episode(week_number=week_number, contestants=this_weeks_contestants, rng_seed=self.__global_rng_seed+week_number, episode_type=self.__global_episode_types[week_number-1])
         #print(getattr(this_episode, 'contestant_weekly_scores'))
         print("----------------------------")
         print("Episode" + str(week_number))
+        print("The challenge for today is " + self.__global_episode_types[week_number-1].ep_type + ".")
+
 
         if len(this_episode.safes) >= 1:
             print("Safes: " + self.get_safes(this_episode)[0:len(self.get_safes(this_episode)) - 2])
@@ -177,6 +187,8 @@ class Simulator:
                        round(this_episode.eliminated.score_average,2),this_episode.eliminated]
             self.__elimination_order.append(elim_person)
         next_week_pool = this_episode.next_week_contestants
+
+        print(this_episode.contestant_weekly_scores)
         if pause == True:
             input("...")
         return next_week_pool

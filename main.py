@@ -5,41 +5,54 @@ import random
 import copy
 
 contestants = []
+glob_seed = 255
 
 def make_contestants():
-    contestants.append(Contestant(contestant_id=1, contestant_name="Ameliance Leveilleur",
-                                  star_power=75, whatnottosing=62, sympathy=86, comedy=66))
-    contestants.append(Contestant(contestant_id=2, contestant_name="Fourchenalt Leveilleur",
-                                  star_power=62, whatnottosing=86, sympathy=2, comedy=2))
-    contestants.append(Contestant(contestant_id=3, contestant_name="Dulia Chai",
-                                  star_power=77, whatnottosing=52, sympathy=66, comedy=88))
-    contestants.append(Contestant(contestant_id=4, contestant_name="Chai-Nuzz",
-                                  star_power=66, whatnottosing=79, sympathy=6, comedy=21))
-    contestants.append(Contestant(contestant_id=5, contestant_name="Runar",
-                                  star_power=41, whatnottosing=34, sympathy=44, comedy=34))
-    contestants.append(Contestant(contestant_id=6, contestant_name="Emet Selch",
-                                  star_power=66, whatnottosing=97, sympathy=55, comedy=35))
-    contestants.append(Contestant(contestant_id=7, contestant_name="Venat",
-                                  star_power=98, whatnottosing=81, sympathy=85, comedy=62))
-    contestants.append(Contestant(contestant_id=8, contestant_name="Hythlodeus",
-                                  star_power=87, whatnottosing=86, sympathy=88, comedy=72))
-    contestants.append(Contestant(contestant_id=9, contestant_name="Erenville",
-                                  star_power=60, whatnottosing=78, sympathy=15, comedy=32))
-    contestants.append(Contestant(contestant_id=10, contestant_name="Raubahn",
-                                  star_power=66, whatnottosing=37, sympathy=20, comedy=27))
-    contestants.append(Contestant(contestant_id=11, contestant_name="Merlwyb",
-                                  star_power=62, whatnottosing=50, sympathy=25, comedy=22))
-    contestants.append(Contestant(contestant_id=12, contestant_name="Kan-E-Senna",
-                                  star_power=72, whatnottosing=53, sympathy=91, comedy=8))
-    # contestants.append(Contestant(contestant_id=13, contestant_name="Alaina Whitaker",
-    #                               star_power=38, whatnottosing=53, sympathy=55, comedy=36))
-    # contestants.append(Contestant(contestant_id=14, contestant_name="Danny Gokey",
-    #                               star_power=27, whatnottosing=49, sympathy=75, comedy=33))
-    # contestants.append(Contestant(contestant_id=14, contestant_name="Tatiana Del Toro",
-    #                               star_power=49, whatnottosing=48, sympathy=55, comedy=99))
+    contestant_name_and_stat_list = []
+    with open ("Config/contestant_stats",'r') as f:
+        for line in f.readlines():
+            if len(line) < 5:
+                pass
+            else:
+                num_for_seed = 0
+                line_edit = line.strip()
+                line_split = line_edit.split("\t")
+                for i, obj in enumerate(line_split):
+                    if i == 0:
+                        pass
+                    else:
+                        line_split[i] = int(line_split[i])
+                        num_for_seed += int(line_split[i])
+                line_split.append(random.Random(glob_seed+num_for_seed).randint(1, 9999999))
+                contestant_name_and_stat_list.append(line_split)
+
+    test = ""
+    for n, contestant_info in enumerate(contestant_name_and_stat_list):
+        contestant_name_val = contestant_info[0]
+
+        #RNG on contestant stats
+        stat_rngize = (glob_seed * 24 * len(contestant_info[0])) - 200
+        for ind, stat in enumerate(contestant_info[1:],1):
+            rng_percent = 0.15
+            stat_percent = (100 - rng_percent) / 100
+            rng_ratio = rng_percent * random.Random(stat_rngize).randint(1,100)
+            stat_ratio = stat_percent * stat
+            contestant_info[ind] = round(rng_ratio + stat_ratio)
+
+        contestant_stats = {'Strength': contestant_info[1], 'Speed': contestant_info[2], 'Luck': contestant_info[3],
+                            'Fashion': contestant_info[4], 'Love': contestant_info[5], 'Beauty': contestant_info[6],
+                            'Leadership': contestant_info[7], 'Composure': contestant_info[8], 'Teamwork': contestant_info[9],
+                            'Theatrics': contestant_info[10], 'Devotion': contestant_info[11], 'Political Drive': contestant_info[12],
+                            'Humor': contestant_info[13], 'Craftsmanship': contestant_info[14], 'Intelligence': contestant_info[15]}
+        #RNG Values
+        prep_range = 10
+        rigor_range = 5
+        prep_val = random.Random(contestant_info[16]).randint(-abs(prep_range), prep_range)
+        contestants.append(Contestant(contestant_id=n,contestant_name=contestant_name_val,star_power=50,whatnottosing=50,sympathy=50,
+                                      comedy=50,stats_values=contestant_stats,prep=prep_val,rigor_range=rigor_range))
+
 
 make_contestants()
-sim_season = Simulator(seed=907214076503, contestant_list=contestants, pause_bool=False)
+sim_season = Simulator(seed=glob_seed, contestant_list=contestants, pause_bool=False)
 sim_season.simulate_season()
-test = ""
 sim_season.elim_ending()

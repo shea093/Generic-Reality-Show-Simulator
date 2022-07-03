@@ -47,3 +47,66 @@
                                   star_power=70, whatnottosing=40, sympathy=75, comedy=12))
     contestants.append(Contestant(contestant_id=12, contestant_name="Alaina Whittaker",
                                   star_power=58, whatnottosing=53, sympathy=61, comedy=7))
+    contestants.append(Contestant(contestant_id=1, contestant_name="Ameliance Leveilleur",
+                                  star_power=75, whatnottosing=62, sympathy=86, comedy=66))
+    contestants.append(Contestant(contestant_id=2, contestant_name="Fourchenalt Leveilleur",
+                                  star_power=62, whatnottosing=86, sympathy=2, comedy=2))
+    contestants.append(Contestant(contestant_id=3, contestant_name="Dulia Chai",
+                                  star_power=77, whatnottosing=52, sympathy=66, comedy=88))
+    contestants.append(Contestant(contestant_id=4, contestant_name="Chai-Nuzz",
+                                  star_power=66, whatnottosing=79, sympathy=6, comedy=21))
+    contestants.append(Contestant(contestant_id=5, contestant_name="Runar",
+                                  star_power=41, whatnottosing=34, sympathy=44, comedy=34))
+    contestants.append(Contestant(contestant_id=6, contestant_name="Emet Selch",
+                                  star_power=66, whatnottosing=97, sympathy=55, comedy=35))
+    contestants.append(Contestant(contestant_id=7, contestant_name="Venat",
+                                  star_power=98, whatnottosing=81, sympathy=85, comedy=62))
+    contestants.append(Contestant(contestant_id=8, contestant_name="Hythlodeus",
+                                  star_power=87, whatnottosing=86, sympathy=88, comedy=72))
+    contestants.append(Contestant(contestant_id=9, contestant_name="Erenville",
+                                  star_power=60, whatnottosing=78, sympathy=15, comedy=32))
+    contestants.append(Contestant(contestant_id=10, contestant_name="Raubahn",
+                                  star_power=66, whatnottosing=37, sympathy=20, comedy=27))
+    contestants.append(Contestant(contestant_id=11, contestant_name="Merlwyb",
+                                  star_power=62, whatnottosing=50, sympathy=25, comedy=22))
+    contestants.append(Contestant(contestant_id=12, contestant_name="Kan-E-Senna",
+                                  star_power=72, whatnottosing=53, sympathy=91, comedy=8))
+
+The Warrior of Light	85	70	60	50	69	58	60	69	75	57	70	37	35	58	59
+G'raha Tia	65	95	60	70	99	75	99	85	85	60	65	71	56	47	81
+Urianger Augurelt	15	10	5	75	40	62	58	90	51	36	86	26	41	39	88
+Alisaie Leveilleur	75	60	35	58	42	45	52	20	33	48	57	58	50	40	68
+Tataru Taru	5	35	70	78	62	40	63	38	50	42	26	45	38	95	37
+Lyse Hext	75	55	20	68	35	70	59	30	48	27	41	70	42	55	31
+Krile Baldesion	10	30	20	22	42	42	59	66	51	26	69	50	75	48	55
+Alphinaud Leveilleur	10	25	35	18	40	43	70	66	79	11	76	98	47	25	85
+Ryne	50	48	25	70	65	60	15	33	53	51	64	28	29	42	31
+Y'shtola Rhul	35	30	20	55	32	75	30	69	32	25	40	48	58	20	74
+Thancred Waters	68	43	15	42	43	68	50	27	38	62	5	39	49	8	29
+Estinien Wyrmblood	80	40	8	37	25	60	8	36	8	5	5	15	28	30	28
+
+G'raha Tia	53	95	45	60	86	61	96	79	75	45	55	65	48	31	71
+The Warrior of Light	85	70	60	40	61	51	60	69	75	41	65	37	31	58	59
+Alphinaud Leveilleur	10	9	41	18	40	43	74	66	84	11	76	98	47	61	85
+Alisaie Leveilleur	75	60	35	72	42	45	52	20	33	48	57	58	50	40	68
+Lyse Hext	75	64	20	68	35	70	59	30	48	27	41	70	42	55	31
+Tataru Taru	5	35	70	78	62	40	63	38	50	42	26	45	38	95	37
+Krile Baldesion	10	37	20	22	51	42	59	66	51	40	69	63	75	48	65
+Urianger Augurelt	15	10	5	71	40	62	58	90	51	36	86	26	41	39	88
+Ryne	50	48	25	72	72	67	15	33	53	51	64	28	29	42	31
+Y'shtola Rhul	35	30	20	55	32	75	30	69	45	39	40	48	64	20	74
+Thancred Waters	71	56	15	42	43	68	50	27	38	62	5	39	49	8	29
+Estinien Wyrmblood	83	40	8	37	25	70	8	36	8	5	5	15	34	30	28
+
+Ameliance Leveilleur	21	20	66	85	90	71	70	92	78	21	68	75	75	78	70
+Fourchenalt Leveilleur	36	21	26	45	36	70	75	78	21	25	89	92	8	42	81
+Venat	90	80	66	55	91	75	78	81	80	25	78	70	82	31	88
+Dulia Chai	52	5	56	68	80	59	21	15	69	83	42	15	86	71	14
+Chai-Nuzz	42	40	21	62	52	42	85	11	62	30	11	85	11	83	78
+Erenville	56	70	50	76	31	71	40	82	42	59	24	62	20	76	76
+Emet Selch	87	80	41	41	46	46	68	35	25	86	65	80	35	31	88
+Kan-E-Senna	50	21	44	62	82	69	74	68	58	55	98	69	42	52	51
+Raubahn	85	65	58	21	63	12	71	27	55	68	8	76	43	10	28
+Runar	58	58	68	16	75	18	23	50	68	59	52	50	60	18	8
+Hythlodeus	65	67	65	80	64	95	53	62	79	75	38	52	90	60	66
+Merlwyb	68	29	35	22	36	36	69	48	51	35	11	71	53	40	42

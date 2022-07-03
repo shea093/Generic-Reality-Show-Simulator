@@ -1,6 +1,9 @@
+import random
+
+
 class Contestant:
-    def __init__(self, contestant_id: int, contestant_name: str, star_power = 0,
-                 whatnottosing = 0, sympathy = 0, comedy = 0):
+    def __init__(self, contestant_id: int, contestant_name: str, star_power=0,
+                 whatnottosing=0, sympathy=0, comedy=0, stats_values=None, prep=0, rigor_range=30):
         self.__contestant_id = contestant_id
         self.__contestant_name = contestant_name
         self.__star_power = star_power
@@ -21,11 +24,30 @@ class Contestant:
         self.__score_floor = 1
         self.__score_ceiling = 100
         self.__ceiling_steam_change = False
+        self.__stats = {'Strength': 0, 'Speed': 0, 'Luck': 0, 'Fashion': 0, 'Love': 0, 'Beauty': 0, 'Leadership': 0,
+                        'Composure': 0, 'Teamwork': 0, 'Theatrics': 0,
+                        'Devotion': 0, 'Political Drive': 0, 'Humor': 0, 'Craftsmanship': 0, 'Intelligence': 0}
+        self.__seasonal_preparation = prep
+        self.__rigor_morris = 0
+        if prep != 0:
+            self.__score_floor = prep
+            self.__rigor_morris = random.Random(prep * len(self.__contestant_name) + int(contestant_id)).randint(-abs(rigor_range), rigor_range)
+            if self.__rigor_morris < 0:
+                self.__rigor_morris = 0
+        if isinstance(stats_values, dict):
+            self.__stats = stats_values
 
     @property
     def placement(self):
         return self.__placement
 
+    @property
+    def rigor_morris(self):
+        return self.__rigor_morris
+
+    @property
+    def seasonal_preparation(self):
+        return self.__seasonal_preparation
 
     @property
     def contestant_id(self):
@@ -42,6 +64,14 @@ class Contestant:
     @star_power.setter
     def star_power(self, value: int):
         self.__star_power = value
+
+    @property
+    def stats(self):
+        return self.__stats
+
+    @stats.setter
+    def stats(self, value: dict):
+        self.__stats = value
 
     @property
     def ceiling_steam_change(self):
@@ -175,5 +205,3 @@ class Contestant:
     def __repr__(self):
         output = "<Name: " + self.__contestant_name + ">"
         return output
-
-
